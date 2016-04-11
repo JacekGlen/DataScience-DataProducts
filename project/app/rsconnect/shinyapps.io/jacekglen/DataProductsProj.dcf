@@ -2,6 +2,6 @@ name: DataProductsProj
 account: jacekglen
 server: shinyapps.io
 appId: 93706
-bundleId: 416553
+bundleId: 416621
 url: https://jacekglen.shinyapps.io/DataProductsProj/
-when: 1460410653.39302
+when: 1460414557.34338
