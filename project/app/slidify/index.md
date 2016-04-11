@@ -26,15 +26,7 @@ The Storm Events Database contains the records used to create the official NOAA 
 
 The database currently contains data from January 1950 to December 2015, as entered by NOAA's National Weather Service (NWS). NCEI has performed data reformatting and standardization of event types but has not changed any data values for locations, fatalities, injuries, damage, narratives and any other event specific information.
 
-```{r, echo=FALSE}
-library(knitr)
-library(data.table)
-library(rCharts)
-library(reshape2)
 
-dt <- fread('../data.csv')
-dt.agg.year <- dt[, list(Count=sum(COUNT), Injuries=sum(INJURIES), Fatalities=sum(FATALITIES)), by=list(YEAR)]
-```
 --- .class #id 
 
 ## Collection Source
@@ -44,28 +36,18 @@ The data collection methods have changed substantially over time. Prior to 1993,
 
 ## Losses between 1950 and 201 caused by severe weather events
 
- - `r format(sum(dt$FATALITIES), big.mark=' ')` deaths
- - `r format(sum(dt$INJURIES), big.mark=' ')` injuries
- - $`r format(round((sum(dt$PROPDMG) + sum(dt$CROPDMG)) / 1000), big.mark=' ')` billion worth of damage
+ - 14 834 deaths
+ - 139 445 injuries
+ - $358 billion worth of damage
 
 --- .class #id 
  
 ## Chart
 
 
-```{r nvd3plot2, results = 'asis', comment = NA, message = F, echo = F} 
 
-data <- melt(dt.agg.year[, list(YEAR=YEAR, Injuries=Injuries, Fatalities=Fatalities)], id='YEAR')
-populationImpact <- nPlot(
-    value ~ YEAR, group = 'variable', data = data[order(-YEAR, variable, decreasing = T)],
-    type = 'stackedAreaChart', dom = 'populationImpact'
-)
-        
-populationImpact$chart(margin = list(left = 100))
-populationImpact$yAxis( axisLabel = "Affected", width = 80)
-populationImpact$xAxis( axisLabel = "Year", width = 70)
-        
-populationImpact
+```
+Error in object$show(): object 'opts_current' not found
 ```
 
 --- .class #id 
